@@ -73,8 +73,8 @@ void loop() {
 	display.clearDisplay();
 	display.setTextSize(2);
 	display.setTextColor(WHITE);
-	display.setCursor(25,5);
-	display.println(F("Arduino"));
+	display.setCursor(20,5);
+	display.println(F("Particle"));
 	display.setCursor(20,25);
 	display.println(F("Cellular"));        
 	display.setCursor(20,45);
