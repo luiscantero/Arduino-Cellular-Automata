@@ -25,6 +25,9 @@
 #include <Adafruit_SSD1306/Adafruit_GFX.h>
 #include <Adafruit_SSD1306/Adafruit_SSD1306.h>
 
+// Requires community library:
+// ADAFRUIT_SSD1306
+
 // Wiring:
 // https://community.particle.io/t/getting-started-with-the-maker-kit-oled-how-to/15897
 
