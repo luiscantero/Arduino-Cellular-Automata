@@ -1,6 +1,7 @@
-# Arduino-Cellular-Automata
-A cellular automata for Arduino and OLED display
+# Particle-Photon-Cellular-Automata
+A cellular automata for Particle Photon and OLED display
 
-Step by step tutorial can be found at http://runtimeprojects.com/2016/02/arduino-and-oled-based-cellular-automata/
+Wiring:
+https://community.particle.io/t/getting-started-with-the-maker-kit-oled-how-to/15897
 
 Feel free to leave comments and/or suggestions.
