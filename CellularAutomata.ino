@@ -22,15 +22,17 @@
  * SOFTWARE.
  */
 
+#include <Adafruit_SSD1306/Adafruit_GFX.h>
+#include <Adafruit_SSD1306/Adafruit_SSD1306.h>
 
-#include <SPI.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+// Wiring:
+// https://community.particle.io/t/getting-started-with-the-maker-kit-oled-how-to/15897
 
-
-#define OLED_RESET 4
-Adafruit_SSD1306 display(OLED_RESET);
+// use hardware SPI
+#define OLED_DC     D3
+#define OLED_CS     D4
+#define OLED_RESET  D5
+Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
 
 //set to 1 if the previous screen was the same as the current one
 int sameScreen;
@@ -41,14 +43,19 @@ uint8_t grid[20][12];
 //The new grid is used so that 'grid' is not compromised
 uint8_t newgrid[20][12];
 
+#if (SSD1306_LCDHEIGHT != 64)
+#error("Height incorrect, please fix Adafruit_SSD1306.h!");
+#endif
 
-void setup()   {                
-
+void setup()   {
   // Serial.begin(9600); //use only for debugging purposes
 
   //Setting up the display pay attention to the address. Yours might be different
   
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3C); //initialize with the I2C addr 0x3C (128x64)
+  // by default, we'll generate the high voltage from the 3.3v line internally! (neat!)
+  display.begin(SSD1306_SWITCHCAPVCC);
+  // init done
+  
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(WHITE);
@@ -58,7 +65,6 @@ void setup()   {
 }
 
 void loop() {
-        
     //Displaying a simple splash screen    
 
 	display.clearDisplay();
@@ -97,7 +103,6 @@ void loop() {
 
 //Draws the grid on the display
 void drawGrid(void) {
-
   for (int16_t x=1; x<19;x++) {
     // alternate colors
     
@@ -184,4 +189,3 @@ bool isSameScreen(){
   }
   return true;
 }
-
